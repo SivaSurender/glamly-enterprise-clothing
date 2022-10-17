@@ -9,3 +9,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+* {
+  // to not inctease the size of shaop in navigation when padding is added
+  box-sizing: border-box;
+}
