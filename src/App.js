@@ -1,7 +1,7 @@
 import HomeRouter from "./routes/HomeRouter/homeRouter.component";
 import NavigationBar from "./routes/Navigation/NavigationRouter.component";
 import { Routes, Route } from "react-router-dom";
-import SignIn from "./routes/signIn/signin.component";
+import SignIn from "./routes/SignIn/signin.component";
 
 const Shop = () => {
   return (
