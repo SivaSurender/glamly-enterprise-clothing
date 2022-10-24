@@ -29,16 +29,18 @@ const firebaseConfig = {
 // Initialize Firebase
 const firbaseApp = initializeApp(firebaseConfig);
 
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
 
 // sets the mode of which the ser wold be asked to sign in
 // takes in by the way of parameters
-provider.setCustomParameters({
+googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
 export const auth = getAuth();
-export const signInWithGooglePopUp = () => signInWithPopup(auth, provider);
+
+export const signInWithGooglePopUp = () =>
+  signInWithPopup(auth, googleProvider);
 
 // db points our database from our firestore directly
 export const db = getFirestore();
