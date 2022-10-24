@@ -11,6 +11,7 @@ import {
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 
 //importing firestore components
@@ -46,6 +47,10 @@ export const signInWithGooglePopUp = () =>
 export const db = getFirestore();
 
 export const createUserDocumentFromAuth = async (userAuth) => {
+  // guard class
+  // if we don't get user auth return
+
+  if (!userAuth) return;
   const userDocRef = doc(db, "users", userAuth.uid);
 
   console.log(userDocRef);
@@ -80,4 +85,14 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
   // if user exists return the userdocref as it is
   return userDocRef;
+};
+
+// explicit function for user signup with createUserWithEmailAndPassword
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  //guard class
+
+  if (!email || !password) return;
+
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
