@@ -3,6 +3,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { createUserDocumentFromAuth } from "../../utilities/firebase/firebase.utility";
 import { auth } from "../../utilities/firebase/firebase.utility";
 import SignUpForm from "../sign-up-form/signup.form.component";
+import "./signup.component.scss";
+import Button from "../button/button.component";
 
 const defaultFormFields = {
   displayName: "",
@@ -58,8 +60,9 @@ const NewSignUp = () => {
   };
 
   return (
-    <div>
-      <h1>SignUp with your email </h1>
+    <div className="sign-up-container">
+      <h2>Don't have an account yet ?</h2>
+      <span>SignUp with your email </span>
       <form onSubmit={formHandlerSubmit}>
         <SignUpForm
           label="Display Name"
@@ -99,7 +102,7 @@ const NewSignUp = () => {
 
         {/* button to submit the form as whole after validation from above label required fields
               then submitted through on submit handler attached in the form at the top */}
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
