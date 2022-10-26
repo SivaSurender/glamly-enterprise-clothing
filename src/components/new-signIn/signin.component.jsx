@@ -30,16 +30,15 @@ const NewSignIn = () => {
   const resetFormHandler = () => {
     setFormFields(defaultFormFields);
   };
+  //fetc the response with async
+  const signInwithGoogle = async () => {
+    const { user } = await signInWithGooglePopUp();
+
+    await createUserDocumentFromAuth(user);
+  };
 
   const formHandlerSubmit = async (event) => {
     event.preventDefault();
-
-    //fetc the response with async
-    const signInwithGoogle = async () => {
-      const { user } = await signInWithGooglePopUp();
-
-      await createUserDocumentFromAuth(user);
-    };
 
     try {
       const res = await signInWithAuthUserWithEmailAndPassword(email, password);
@@ -89,11 +88,7 @@ const NewSignIn = () => {
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
 
-          <Button
-            buttonType="google"
-            onClick={signInWithGooglePopUp}
-            type="button"
-          >
+          <Button buttonType="google" onClick={signInwithGoogle} type="button">
             Google Sign in
           </Button>
         </div>
