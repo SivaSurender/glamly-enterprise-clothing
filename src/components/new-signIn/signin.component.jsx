@@ -45,7 +45,19 @@ const NewSignIn = () => {
       const res = await signInWithAuthUserWithEmailAndPassword(email, password);
       console.log(res);
       resetFormHandler();
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+      switch (error.code) {
+        case "auth/wrong-password":
+          alert("Incorrect user name or password");
+          break;
+
+        case "auth/user-not-found":
+          alert(
+            "You don't have an aaccount associated with this email ID, please sign up"
+          );
+      }
+    }
   };
 
   return (
@@ -80,7 +92,7 @@ const NewSignIn = () => {
           <Button
             buttonType="google"
             onClick={signInWithGooglePopUp}
-            type="submit"
+            type="button"
           >
             Google Sign in
           </Button>
