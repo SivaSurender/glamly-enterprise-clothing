@@ -1,9 +1,12 @@
 import { Outlet, Link } from "react-router-dom";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { ReactComponent as SiteLogo } from "../../assets/icon.svg";
 import "./NavigationRouter.component.scss";
+import { UserContext } from "../../contexts/user.context";
 
 const NavigationBar = () => {
+  const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
   return (
     <Fragment>
       <div className="navigation">
